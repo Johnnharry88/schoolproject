@@ -6,6 +6,15 @@ app.get('/', (req, res) => {
   res.json({ greeting : "Welcome Back John" });
 });
 
-app.listen(3080, () => {
-  console.log("Server running on port 3080");
-});
+async function startServer() {
+  try {
+    const checkDb = await db();
+    app.listen(3080, () => {
+    console.log("Server running on port 3080");
+    });
+  } catch (err) {
+    console.error('Server startup failed',err.message);
+    process.exit(1);
+  }
+}
+startServer();
