@@ -8,7 +8,9 @@ app.get('/', (req, res) => {
 
 async function startServer() {
   try {
-    const checkDb = await db();
+    const checkDb = await db.getConnection();
+    console.log('Db Connected successfully')
+    checkDb.release();
     app.listen(3080, () => {
     console.log("Server running on port 3080");
     });
