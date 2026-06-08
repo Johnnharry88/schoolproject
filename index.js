@@ -1,10 +1,15 @@
 const express = require('express');
-const db = require('./db')
+const db = require('./databasefiles/db')
+const roleFunc = require('./routes/roleController')
 const app = express();
+
+app.use(express.json());
 
 app.get('/', (req, res) => {
   res.json({ greeting : "Welcome Back John" });
 });
+
+app.use('/roles', roleFunc);
 
 async function startServer() {
   try {
