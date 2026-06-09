@@ -4,13 +4,17 @@ const router = express.Router();
 
 router.post('/', async (req, res) => {
   const { role } = req.body
-  console.log(role)
   const postrole = await roleModel.createRole(role);
-  console.log(postrole);
-  res.json({Server: "Now Using Router"})
+  res.json({Message: 'New Role saved successfully'})
 });
-router.get('/', (req, res) => {
-  res.json({Server: "Getting all router"})
+
+router.get('/allroles', async (req, res) => {
+  const allroles = await roleModel.getAllRoles();
+  if (!allroles) {
+    res.json("No existing role, please create one")
+  } else {
+    res.json(allroles);
+  }
 });
 
 module.exports = router;
