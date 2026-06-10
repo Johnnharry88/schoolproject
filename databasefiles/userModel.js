@@ -10,8 +10,8 @@ async function getUserById(id) {
   return user[0];
 }
 
-async function createUser(first_name, last_name, email, password, role_id, phone, status) {
-  const [ details ] = await dbConn.query('INSERT INTO users( first_name, last_name, email, hashed_password, role_id, phone, status) VALUES (?,?,?,?,?,?,?)',[first_name, last_name, email, password, role_id, phone, status]);
+async function createUser(first_name, last_name, email, password, role_id, phone, gender, status, pics_name) {
+  const [ details ] = await dbConn.query('INSERT INTO users( first_name, last_name, email, hashed_password, role_id, phone, gender, status, pics_name) VALUES (?,?,?,?,?,?,?,?,?)', [first_name, last_name, email, password, role_id, phone, gender, status, pics_name]);
   return details.insertId;
 }
 
