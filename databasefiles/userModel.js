@@ -16,7 +16,7 @@ async function createUser(first_name, last_name, email, password, role_id, phone
 }
 
 async function updateUser(id, first_name, last_name, email, hashed_passkey, role_id, phone, status) {
-  const [ details ] = await dbConn.query("UPDATE users SET first_name = ?, last_name = ?, email = ?, hashed_password = ?, role_id = ?, phone = ?, status = ? WHERE id = ?", [first_nae, last_name, email, hashed_passkey,role_id, phone, status]);
+  const [ details ] = await dbConn.query("UPDATE users SET first_name = ?, last_name = ?, email = ?, hashed_password = ?, role_id = ?, phone = ?, status = ? WHERE id = ?", [id,first_nae, last_name, email, hashed_passkey,role_id, phone, status]);
   return details.affectedRows;
 }
 

@@ -2,6 +2,7 @@ const express = require('express');
 const db = require('./databasefiles/db');
 const roleFunc = require('./routes/roleController');
 const userFunc = require('./routes/userController');
+const sessionFunc = require('./routes/sessionController');
 const app = express();
 
 app.use(express.json());
@@ -9,6 +10,8 @@ app.use('/profilepics', express.static('profilePics_upload'));
 
 app.use('/roles', roleFunc);
 app.use('/user', userFunc);
+app.use('/session', sessionFunc);
+
 
 async function startServer() {
   try {
