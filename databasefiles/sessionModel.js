@@ -36,4 +36,8 @@ async function activateSession(session_name) {
   return activate.affectedRows;
 }
 
-module.exports = { getAllSession, createSession, getSessionById, updateSession, deleteSession, activateSession, getSessionByName };
+async function getActiveSession() {
+  const [ active_session ] = await dbConn.query(`SELECT id FROM academic_session WHERE active = 1`);
+  return active_session;
+}
+module.exports = { getAllSession, createSession, getSessionById, updateSession, deleteSession, activateSession, getSessionByName, getActiveSession };

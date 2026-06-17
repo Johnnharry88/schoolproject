@@ -11,7 +11,6 @@ sessionroute.get('/allsession', async (req, res) => {
   }
 });
 
-
 sessionroute.post('/create_session', async (req, res) => {
   let { session_name, active } = req.body;
   if (active === 'true') {

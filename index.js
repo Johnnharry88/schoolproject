@@ -1,17 +1,20 @@
 const express = require('express');
 const db = require('./databasefiles/db');
 const roleFunc = require('./routes/roleController');
-const userFunc = require('./routes/userController');
+const { routeuser } = require('./routes/userController');
 const sessionFunc = require('./routes/sessionController');
+const classFunc = require('./routes/classController');
+const studentFunc = require('./routes/studentsController');
 const app = express();
 
 app.use(express.json());
 app.use('/profilepics', express.static('profilePics_upload'));
 
 app.use('/roles', roleFunc);
-app.use('/user', userFunc);
+app.use('/user', routeuser);
 app.use('/session', sessionFunc);
-
+app.use('/classes', classFunc);
+app.use('/students', studentFunc);
 
 async function startServer() {
   try {

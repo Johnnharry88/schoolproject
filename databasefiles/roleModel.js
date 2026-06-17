@@ -10,4 +10,9 @@ async function getAllRoles() {
   return roles;
 }
 
-module.exports = { createRole, getAllRoles };
+async function getRolesByName(name) {
+  const [ user_role ] = await dbConn.query(`SELECT id FROM roles WHERE Name = ?`, [name]);
+  return user_role[0].id;
+}
+
+module.exports = { createRole, getAllRoles, getRolesByName };

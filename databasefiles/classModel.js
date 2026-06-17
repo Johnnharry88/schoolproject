@@ -1,7 +1,7 @@
 const dbConn = require('./db');
 
 async function getAllClasses() {
-  const [ allclasses ] = await dbConn.query(`SELECCT id, class_name, session_id from classes`);
+  const [ allclasses ] = await dbConn.query(`SELECT id, class_name, session_id FROM classes`);
   return allclasses;
 }
 
@@ -25,4 +25,4 @@ async function deleteClass(id) {
   return delClass.affectedRows;
 }
 
-module.exports = { getAllClasses, getCLassByName, createClass, deleteClass };
+module.exports = { getAllClasses, getClassByName, createClass, deleteClass };

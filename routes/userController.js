@@ -25,16 +25,14 @@ routeuser.post('/register', upload.single('photo'), async (req, res) => {
     res.json({ Message: "Role does not exist" });
   } else {
     const user = await userModel.createUser(first_name, last_name, email, password, role_id.id, phone, gender, status, pics_name);
-    console.log(user);
     res.json({ Message: "User details received" });
   }
 });
 
 routeuser.get('/allusers', async (req, res) => {
   const users = await userModel.getAllUsers();
-  console.log(users)
   res.json(users);
 });
 
 
-module.exports = routeuser;
+module.exports = { routeuser, upload };

@@ -1,4 +1,4 @@
-const dcConn = require('/db');
+const dbConn = require('./db');
 
 async function getAllStudents() {
   const [ students ] = await dbConn.query(`SELECT id, user_id, admission_no, class_id)`);
@@ -11,7 +11,7 @@ async function getStudentByAdmin(admission_no) {
 }
 
 async function createStudent(user_id, admission_no, class_id) {
-  const [ regStudents ] = await dbConn.query(`INSERT INTO students (user_id, admission_no, class_id) VALUES (?, ?, ?)` [user_id, admission_no, class_id]);
+  const [ regStudents ] = await dbConn.query(`INSERT INTO students (user_id, admission_no, class_id) VALUES (?, ?, ?)`, [user_id, admission_no, class_id]);
   return regStudents.insertId;
 }
 

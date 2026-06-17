@@ -1,0 +1,7 @@
+const classModel = require('../databasefiles/classModel');
+const express = require('express');
+const classroute = express.Route();
+const sessionModel = require('../databasefiles/sessionModel');
+
+classroute.get('/get_class', async *
+
