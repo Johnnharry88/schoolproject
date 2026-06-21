@@ -1,7 +1,7 @@
 const dbConn = require('./db');
 
 async function getAllStudents() {
-  const [ students ] = await dbConn.query(`SELECT id, user_id, admission_no, class_id)`);
+  const [ students ] = await dbConn.query(`SELECT id, user_id, admission_no, class_id FROM students`);
   return students;
 }
 

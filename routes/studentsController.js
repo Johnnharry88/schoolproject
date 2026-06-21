@@ -39,5 +39,12 @@ studentroute.post('/register', Upload.single('photo'), async (req, res) => {
   res.json({ Message: 'Student created successfully' })
 });
 
-
+studentroute.get('/fetchstudents', async (req, res) => {
+  const allStudents = await studentsModel.getAllStudents();
+  if (!allStudents) {
+    res.json({ Message: 'No students in database' });
+    return;
+  }
+  res.json({ allStudents });
+});
 module.exports = studentroute;

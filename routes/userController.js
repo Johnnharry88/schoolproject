@@ -23,16 +23,23 @@ routeuser.post('/register', upload.single('photo'), async (req, res) => {
   const role_id = roles.find(r => r.Name === role);
   if (!role_id) {
     res.json({ Message: "Role does not exist" });
-  } else {
-    const user = await userModel.createUser(first_name, last_name, email, password, role_id.id, phone, gender, status, pics_name);
-    res.json({ Message: "User details received" });
+    return;
   }
+  const user = await userModel.createUser(first_name, last_name, email, password, role_id.id, phone, gender, status, pics_name);
+  if (!user) {
+    res.json({ Message: 'Error occured while creating user' });
+    return;
+  }
+  res.json({ Message: "User details received" });
 });
 
 routeuser.get('/allusers', async (req, res) => {
   const users = await userModel.getAllUsers();
+  if (!users) {
+    res.json({ Message: 'Error occured while fetching users' });
+    return;
+  }
   res.json(users);
 });
-
 
 module.exports = { routeuser, upload };

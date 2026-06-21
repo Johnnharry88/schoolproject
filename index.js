@@ -5,6 +5,8 @@ const { routeuser } = require('./routes/userController');
 const sessionFunc = require('./routes/sessionController');
 const classFunc = require('./routes/classController');
 const studentFunc = require('./routes/studentsController');
+const teachFunc = require('./routes/teacherController');
+
 const app = express();
 
 app.use(express.json());
@@ -15,6 +17,7 @@ app.use('/user', routeuser);
 app.use('/session', sessionFunc);
 app.use('/classes', classFunc);
 app.use('/students', studentFunc);
+app.use('/teacher', teachFunc);
 
 async function startServer() {
   try {
